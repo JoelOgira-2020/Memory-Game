@@ -34,11 +34,10 @@ createGrid();
 const checkMatch = () => {
     console.log('match')
     const cards = grid.querySelectorAll('img')
-    console.log(cards);
     if (cardChosen[0] == cardChosen[1]) {
         alert('You found a match')
         cards[cardChosenIds[0]].setAttribute('src', '../img/white.png');
-        cards[cardChosenIds[1]].setAttribute('src', '../img/white.png');
+        cards[cardChosenIds[1]].setAttribute('src', cardArray[cardId].img);
         cards[cardChosenIds[0]].removeEventListener('click', flipCard);
         cards[cardChosenIds[1]].removeEventListener('click', flipCard);
         cardsWon.push(cardChosen);   
@@ -54,8 +53,6 @@ const flipCard = () => {
             console.log(cardChosen);
             console.log(cardChosenIds);
             flipCard.target.setAttribute('src', cardArray[cardId].img);
-            const cards = grid.querySelectorAll('img')
-            console.log(cards)
             if (cardChosen.length === 2) {
                 setTimeout(checkMatch, 500);
             }
